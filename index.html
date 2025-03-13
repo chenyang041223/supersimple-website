@@ -5,32 +5,6 @@
     <title>图书阅读平台</title>
 	<link rel="stylesheet" href="styles.css">
 </head>
-<script>
-    // 汉堡菜单交互
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navLinks.classList.toggle('active');
-    });
-
-    // 点击菜单外区域关闭菜单
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.navbar') && window.innerWidth <= 768) {
-            hamburger.classList.remove('active');
-            navLinks.classList.remove('active');
-        }
-    });
-
-    // 窗口resize时重置菜单
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 768) {
-            hamburger.classList.remove('active');
-            navLinks.classList.remove('active');
-        }
-    });
-</script>
 <body>
 
 <!-- 头部 -->
@@ -143,6 +117,6 @@
 <footer>
     <p>&copy; 2025 cy版权</p>
 </footer>
-
+<script src="script.js"></script> 
 </body>
 </html>
