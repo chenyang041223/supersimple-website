@@ -111,7 +111,7 @@ header h1 {
 
     /* 添加激活状态样式 */
     .nav-links.active {
-        display: flex;
+        display: flex !important;;
     }
 }
 
