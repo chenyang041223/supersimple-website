@@ -80,6 +80,10 @@ header h1 {
 
 /* 移动端样式 */
 @media (max-width: 768px) {
+    .hamburger {
+        display: block; /* 在移动端显示汉堡包 */
+    }
+
     .nav-links {
         display: none;
         width: 100%;
@@ -104,14 +108,17 @@ header h1 {
         padding: 12px; /* 增大点击区域 */
     }
 
-    /* 显示汉堡菜单 */
-    .hamburger {
-        display: block;
-    }
-
-    /* 添加激活状态样式 */
+    /* 当 nav-links 有 active 类时显示菜单 */
     .nav-links.active {
-        display: flex !important;;
+        display: flex;
+    }
+}
+
+/* 电脑端样式 */
+@media (min-width: 769px) {
+    .nav-links {
+        display: flex;
+        flex-direction: row;
     }
 }
 
