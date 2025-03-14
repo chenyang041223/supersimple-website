@@ -78,18 +78,6 @@ header h1 {
     transition: all 0.3s ease;
 }
 
-/* 导航链接样式，确保电脑端横向显示 */
-.nav-links {
-    display: flex;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-links li {
-    margin: 0;
-}
-
 /* 移动端样式 */
 @media (max-width: 768px) {
     .nav-links {
@@ -116,9 +104,14 @@ header h1 {
         padding: 12px; /* 增大点击区域 */
     }
 
-    /* 在移动端显示汉堡菜单 */
+    /* 显示汉堡菜单 */
     .hamburger {
         display: block;
+    }
+
+    /* 添加激活状态样式 */
+    .nav-links.active {
+        display: flex;
     }
 }
 
