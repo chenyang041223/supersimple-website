@@ -1,26 +1,27 @@
-		/* 全局样式 */
-        body {
-            font-family: "微软雅黑", Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            background-color: #f0f8e1; /* 浅绿色背景 */
-            color: #333;
-        }
+/* 全局样式 */
+body {
+    font-family: "微软雅黑", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #f0f8e1; /* 浅绿色背景 */
+    color: #333;
+}
 
-        /* 头部样式 */
-        header {
-            background-color: #d4edda; /* 浅绿色 */
-            color: #155724; /* 深绿色文字 */
-            padding: 20px 0;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+/* 头部样式 */
+header {
+    background-color: #d4edda; /* 浅绿色 */
+    color: #155724; /* 深绿色文字 */
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
 /* 新增：响应式基础 */
 @media (max-width: 768px) {
     .book-list,
@@ -34,20 +35,29 @@
 }
 
 /* 修改导航栏样式 */
+/* 将所有导航栏样式统一到 .navbar 类中 */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
     position: relative;
+    z-index: 1000; /* 新增层级控制 */
+    background-color: #fff3cd; /* 原 nav 的背景色 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 原 nav 的阴影 */
 }
 
-.nav-links {
-    display: flex;
-    gap: 20px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+.navbar a {
+    color: #856404; /* 原 nav a 的颜色 */
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar a:hover {
+    background-color: #ffeeba; /* 原 nav a:hover 的效果 */
 }
 
 /* 汉堡菜单样式 */
@@ -68,12 +78,20 @@
     transition: all 0.3s ease;
 }
 
+/* 导航链接样式，确保电脑端横向显示 */
+.nav-links {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0;
+}
+
 /* 移动端样式 */
 @media (max-width: 768px) {
-    .hamburger {
-        display: block; /* 显示汉堡按钮 */
-    }
-    
     .nav-links {
         display: none;
         width: 100%;
@@ -82,387 +100,312 @@
         left: 0;
         background-color: #fff3cd;
         flex-direction: column;
-        padding: 20px;
+        padding: 10px 0; /* 减少内边距 */
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 999; /* 确保菜单在顶层 */
     }
-    
-    .nav-links.active {
-        display: flex;
-    }
-    
+
     .nav-links li {
-        margin: 10px 0;
+        margin: 8px 0; /* 调整间距 */
     }
-    
+
     .nav-links a {
         width: 100%;
         text-align: center;
         margin: 5px 0;
+        padding: 12px; /* 增大点击区域 */
+    }
+
+    /* 在移动端显示汉堡菜单 */
+    .hamburger {
+        display: block;
     }
 }
 
-/* 汉堡菜单动画 */
-.hamburger.active .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
+/* 主体内容样式 */
+.container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #ffffff; /* 白色背景 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
-.hamburger.active .bar:nth-child(2) {
-    opacity: 0;
+
+.container h2 {
+    color: #155724; /* 深绿色标题 */
+    font-size: 2em;
+    margin-bottom: 20px;
 }
-.hamburger.active .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
+
+/*mproduct.html的样式*/
+.book-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 三列布局 */
+    gap: 20px; /* 间距 */
 }
-        /* 导航栏样式 */
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #fff3cd; /* 浅黄色 */
-            padding: 10px 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
 
-        nav a {
-            color: #856404; /* 深黄色文字 */
-            text-decoration: none;
-            padding: 10px 20px;
-            margin: 0 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
+.book-item {
+    background-color: #f8f9fa; /* 浅灰色背景 */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
 
-        nav a:hover {
-            background-color: #ffeeba; /* 浅黄色悬停效果 */
-        }
+.book-item:hover {
+    transform: translateY(-5px);
+}
 
-        /* 主体内容样式 */
-        .container {
-            padding: 20px;
-            max-width: 1200px;
-            margin: 20px auto;
-            background-color: #ffffff; /* 白色背景 */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
+.book-item img {
+    width: 100%;
+    border-radius: 8px;
+}
 
-        .container h2 {
-            color: #155724; /* 深绿色标题 */
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-		
-		/*mproduct.html的样式*/
-       .book-list {
-                   display: grid;
-                   grid-template-columns: repeat(3, 1fr); /* 三列布局 */
-                   gap: 20px; /* 间距 */
-               }
-       
-        .book-item {
-                   background-color: #f8f9fa; /* 浅灰色背景 */
-                   border: 1px solid #ddd;
-                   border-radius: 8px;
-                   padding: 15px;
-                   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                   transition: transform 0.3s ease;
-         }
-       
-        .book-item:hover {
-                   transform: translateY(-5px);
-        }
-       
-        .book-item img {
-                   width: 100%;
-                   border-radius: 8px;
-        }
-       
-        .book-item h3 {
-                   color: #155724; /* 深绿色标题 */
-                   font-size: 1.2em;
-                   margin: 10px 0;
-        }
-       
-        .book-item p {
-                   color: #333;
-                   font-size: 0.9em;
-        }
-       
-        .book-item a {
-                   display: inline-block;
-                   background-color: #d4edda; /* 浅绿色按钮 */
-                   color: #155724; /* 深绿色文字 */
-                   padding: 8px 15px;
-                   text-decoration: none;
-                   border-radius: 5px;
-                   transition: background-color 0.3s ease;
-        }
-       
-        .book-item a:hover {
-                   background-color: #c3e6cb; /* 浅绿色悬停效果 */
-        }
+.book-item h3 {
+    color: #155724; /* 深绿色标题 */
+    font-size: 1.2em;
+    margin: 10px 0;
+}
 
-			/*pproduct.html的样式*/
-		.product-list {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 三列布局 */
-            gap: 20px; /* 间距 */
-        }
+.book-item p {
+    color: #333;
+    font-size: 0.9em;
+}
 
-        .product-item {
-            background-color: #f8f9fa; /* 浅灰色背景 */
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
+.book-item a {
+    display: inline-block;
+    background-color: #d4edda; /* 浅绿色按钮 */
+    color: #155724; /* 深绿色文字 */
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
 
-        .product-item:hover {
-            transform: translateY(-5px);
-        }
+.book-item a:hover {
+    background-color: #c3e6cb; /* 浅绿色悬停效果 */
+}
 
-        .product-item img {
-            width: 100%;
-            border-radius: 8px;
-        }
+/*pproduct.html的样式*/
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 三列布局 */
+    gap: 20px; /* 间距 */
+}
 
-        .product-item h3 {
-            color: #155724; /* 深绿色标题 */
-            font-size: 1.2em;
-            margin: 10px 0;
-        }
+.product-item {
+    background-color: #f8f9fa; /* 浅灰色背景 */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
 
-        .product-item p {
-            color: #333;
-            font-size: 0.9em;
-        }
+.product-item:hover {
+    transform: translateY(-5px);
+}
 
-        .product-item a {
-            display: inline-block;
-            background-color: #d4edda; /* 浅绿色按钮 */
-            color: #155724; /* 深绿色文字 */
-            padding: 8px 15px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
+.product-item img {
+    width: 100%;
+    border-radius: 8px;
+}
 
-        .product-item a:hover {
-            background-color: #c3e6cb; /* 浅绿色悬停效果 */
-        }
+.product-item h3 {
+    color: #155724; /* 深绿色标题 */
+    font-size: 1.2em;
+    margin: 10px 0;
+}
 
-			
-		.award-list {
-            display: flex;/*award.html的样式*/
-            flex-wrap: wrap;
-            gap: 20px; /* 间距 */
-            justify-content: center;
-        }
+.product-item p {
+    color: #333;
+    font-size: 0.9em;
+}
 
-        .award-item {
-            background-color: #f8f9fa; /* 浅灰色背景 */
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            width: calc(33.333% - 40px); /* 三列布局 */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
+.product-item a {
+    display: inline-block;
+    background-color: #d4edda; /* 浅绿色按钮 */
+    color: #155724; /* 深绿色文字 */
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
 
-        .award-item:hover {
-            transform: translateY(-5px);
-        }
+.product-item a:hover {
+    background-color: #c3e6cb; /* 浅绿色悬停效果 */
+}
 
-        .award-item img {
-            width: 100%;
-            max-width: 200px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-        }
+/*award.html的样式*/
+.award-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* 间距 */
+    justify-content: center;
+}
 
-        .award-item h3 {
-            color: #155724; /* 深绿色标题 */
-            font-size: 1.2em;
-            margin: 10px 0;
-        }
+.award-item {
+    background-color: #f8f9fa; /* 浅灰色背景 */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: calc(33.333% - 40px); /* 三列布局 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
 
-        .award-item p {
-            color: #333;
-            font-size: 0.9em;
-            margin-bottom: 15px;
-        }
+.award-item:hover {
+    transform: translateY(-5px);
+}
 
-        .award-item a {
-            display: inline-block;
-            background-color: #d4edda; /* 浅绿色按钮 */
-            color: #155724; /* 深绿色文字 */
-            padding: 8px 15px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
+.award-item img {
+    width: 100%;
+    max-width: 200px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
 
-        .award-item a:hover {
-            background-color: #c3e6cb; /* 浅绿色悬停效果 */
-        }
+.award-item h3 {
+    color: #155724; /* 深绿色标题 */
+    font-size: 1.2em;
+    margin: 10px 0;
+}
 
-			/*activity.html的样式*/
-		.activity-list {
-            display: flex;
-            flex-direction: column;
-            gap: 20px; /* 间距 */
-        }
+.award-item p {
+    color: #333;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
 
-        .activity-item {
-            background-color: #f8f9fa; /* 浅灰色背景 */
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
+.award-item a {
+    display: inline-block;
+    background-color: #d4edda; /* 浅绿色按钮 */
+    color: #155724; /* 深绿色文字 */
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
 
-        .activity-item:hover {
-            transform: translateY(-5px);
-        }
+.award-item a:hover {
+    background-color: #c3e6cb; /* 浅绿色悬停效果 */
+}
 
-        .activity-item h3 {
-            color: #155724; /* 深绿色标题 */
-            font-size: 1.5em;
-            margin: 0 0 10px 0;
-        }
+/*activity.html的样式*/
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* 间距 */
+}
 
-        .activity-item p {
-            color: #333;
-            font-size: 1em;
-            margin: 0 0 15px 0;
-        }
+.activity-item {
+    background-color: #f8f9fa; /* 浅灰色背景 */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
 
-        .activity-item a {
-            display: inline-block;
-            background-color: #d4edda; /* 浅绿色按钮 */
-            color: #155724; /* 深绿色文字 */
-            padding: 8px 15px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
+.activity-item:hover {
+    transform: translateY(-5px);
+}
 
-        .activity-item a:hover {
-            background-color: #c3e6cb; /* 浅绿色悬停效果 */
-        }
+.activity-item h3 {
+    color: #155724; /* 深绿色标题 */
+    font-size: 1.5em;
+    margin: 0 0 10px 0;
+}
 
-		.activity-list {
-            display: flex;
-            flex-direction: column;
-            gap: 20px; /* 间距 */
-        }
+.activity-item p {
+    color: #333;
+    font-size: 1em;
+    margin: 0 0 15px 0;
+}
 
-        .activity-item {
-            background-color: #f8f9fa; /* 浅灰色背景 */
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
+.activity-item a {
+    display: inline-block;
+    background-color: #d4edda; /* 浅绿色按钮 */
+    color: #155724; /* 深绿色文字 */
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
 
-        .activity-item:hover {
-            transform: translateY(-5px);
-        }
+.activity-item a:hover {
+    background-color: #c3e6cb; /* 浅绿色悬停效果 */
+}
 
-        .activity-item h3 {
-            color: #155724; /* 深绿色标题 */
-            font-size: 1.5em;
-            margin: 0 0 10px 0;
-        }
+/*download.html的样式*/
+.certificate-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-        .activity-item p {
-            color: #333;
-            font-size: 1em;
-            margin: 0 0 15px 0;
-        }
+.certificate-item {
+    padding: 15px;
+    border-bottom: 1px solid #ddd; /* 分隔线 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
 
-        .activity-item a {
-            display: inline-block;
-            background-color: #d4edda; /* 浅绿色按钮 */
-            color: #155724; /* 深绿色文字 */
-            padding: 8px 15px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
+.certificate-item:last-child {
+    border-bottom: none; /* 最后一个项目去掉分隔线 */
+}
 
-        .activity-item a:hover {
-            background-color: #c3e6cb; /* 浅绿色悬停效果 */
-        }
+.certificate-item:hover {
+    background-color: #f8f9fa; /* 悬停效果 */
+}
 
-			/*download.html的样式*/
-		.certificate-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+.certificate-item h3 {
+    color: #155724; /* 深绿色标题 */
+    font-size: 1.2em;
+    margin: 0;
+}
 
-        .certificate-item {
-            padding: 15px;
-            border-bottom: 1px solid #ddd; /* 分隔线 */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background-color 0.3s ease;
-        }
+.certificate-item p {
+    color: #333;
+    font-size: 0.9em;
+    margin: 0;
+}
 
-        .certificate-item:last-child {
-            border-bottom: none; /* 最后一个项目去掉分隔线 */
-        }
+.certificate-item a {
+    display: inline-block;
+    background-color: #d4edda; /* 浅绿色按钮 */
+    color: #155724; /* 深绿色文字 */
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
 
-        .certificate-item:hover {
-            background-color: #f8f9fa; /* 悬停效果 */
-        }
+.certificate-item a:hover {
+    background-color: #c3e6cb; /* 浅绿色悬停效果 */
+}
 
-        .certificate-item h3 {
-            color: #155724; /* 深绿色标题 */
-            font-size: 1.2em;
-            margin: 0;
-        }
+/* 页脚样式 */
+footer {
+    background-color: #d4edda; /* 浅绿色 */
+    color: #155724; /* 深绿色文字 */
+    text-align: center;
+    padding: 15px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+}
 
-        .certificate-item p {
-            color: #333;
-            font-size: 0.9em;
-            margin: 0;
-        }
-
-        .certificate-item a {
-            display: inline-block;
-            background-color: #d4edda; /* 浅绿色按钮 */
-            color: #155724; /* 深绿色文字 */
-            padding: 8px 15px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .certificate-item a:hover {
-            background-color: #c3e6cb; /* 浅绿色悬停效果 */
-        }
-
-
-        /* 页脚样式 */
-        footer {
-            background-color: #d4edda; /* 浅绿色 */
-            color: #155724; /* 深绿色文字 */
-            text-align: center;
-            padding: 15px 0;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        footer p {
-            margin: 0;
-            font-size: 0.9em;
-        }
+footer p {
+    margin: 0;
+    font-size: 0.9em;
+}
