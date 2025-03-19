@@ -102,16 +102,15 @@ header h1 {
     }
 
     .book-list {
-        grid-template-columns: 1fr; /* 移动端单列布局 */
+        grid-template-columns: 1fr !important; /* 移动端单列布局 */
     }
-
     .product-list {
-        grid-template-columns: 1fr; /* 移动端单列布局 */
+        grid-template-columns: 1fr !important; /* 移动端单列布局 */
+    }
+	.award-list{
+        grid-template-columns: 1fr !important; /* 移动端单列布局 */
     }
 
-    .award-item {
-        width: 100%; /* 移动端全宽 */
-    }
 }
 
 /* 电脑端样式 */
@@ -122,6 +121,9 @@ header h1 {
     .product-list {
         grid-template-columns: repeat(3, 1fr); /* 三列布局 */
     }
+	.award-list {
+	    grid-template-columns: repeat(2, 1fr); /* 二列布局 */
+	}
     .nav-links {
         display: flex;
         flex-direction: row;
@@ -149,6 +151,7 @@ header h1 {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 三列布局 */
     gap: 20px; /* 间距 */
+	grid-auto-rows: minmax(200px, auto); /* 新增行高控制 */
 }
 
 .book-item {
@@ -244,26 +247,24 @@ header h1 {
     background-color: #c3e6cb; /* 浅绿色悬停效果 */
 }
 
-/*award.html的样式*/
+/* award.html的样式 */
 .award-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px; /* 间距 */
-    justify-content: center;
+    display: grid; /* 改用网格布局 */
+    grid-template-columns: repeat(2, 1fr); /* 二列布局 */
+    gap: 20px; /* 列间距 */
+    padding: 0; /* 可选：移除默认内边距 */
+    list-style: none; /* 移除列表符号 */
 }
 
 .award-item {
-    background-color: #f8f9fa; /* 浅灰色背景 */
+    background-color: #f8f9fa;
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 20px;
-    width: calc(33.333% - 40px); /* 三列布局 */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     text-align: center;
+    /* 移除原 width 属性，由网格控制宽度 */
 }
 
 .award-item:hover {
