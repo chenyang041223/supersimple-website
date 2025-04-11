@@ -1,122 +1,382 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 新增此行 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>图书阅读平台</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        function openBook(data) {
+            const encodedData = encodeURIComponent(JSON.stringify(data));
+            window.open(`recommendbook.html?data=${encodedData}`, '_blank');
+        }
+
+       // 定义不同的图书数据
+       const bookDataList = [
+           {
+               title: "图书标题 1",
+               description: "这是一本关于 HTML5 和 CSS 的入门书籍，适合初学者阅读。",
+               bookInfo: {
+                   hero: {
+                       title: 'HTML5与CSS入门',
+                       description: '开启前端开发基础学习之旅'
+                   },
+                   intro: {
+                       title: 'HTML5与CSS简介',
+                       description: 'HTML5用于构建网页结构，CSS用于美化网页样式，是前端开发的基础。'
+                   },
+                   characters: [
+                       {
+                           name: 'HTML标签',
+                           image: 'https://picsum.photos/200/200',
+                           description: '网页结构的基本组成部分'
+                       },
+                       {
+                           name: 'CSS选择器',
+                           image: 'https://picsum.photos/200/201',
+                           description: '精准定位网页元素进行样式设置'
+                       }
+                   ],
+                   battles: [
+                       {
+                           name: '布局挑战',
+                           image: 'https://picsum.photos/200/203',
+                           description: '掌握不同布局方式打造美观页面'
+                       }
+                   ]
+               }
+           },
+           {
+               title: "图书标题 2",
+               description: "这是一本关于 JavaScript 的进阶书籍，适合有一定基础的开发者。",
+               bookInfo: {
+                   hero: {
+                       title: 'JavaScript进阶之路',
+                       description: '提升前端开发能力的关键一步'
+                   },
+                   intro: {
+                       title: 'JavaScript进阶简介',
+                       description: '深入学习JavaScript的高级特性和应用场景。'
+                   },
+                   characters: [
+                       {
+                           name: '函数式编程',
+                           image: 'https://picsum.photos/200/200',
+                           description: 'JavaScript的重要编程范式'
+                       },
+                       {
+                           name: '异步编程',
+                           image: 'https://picsum.photos/200/201',
+                           description: '处理异步操作的关键技术'
+                       }
+                   ],
+                   battles: [
+                       {
+                           name: '性能优化挑战',
+                           image: 'https://picsum.photos/200/203',
+                           description: '优化JavaScript代码性能'
+                       }
+                   ]
+               }
+           },
+           {
+               title: "图书标题 3",
+               description: "这是一本关于 Python 数据分析的书籍，适合数据爱好者。",
+               bookInfo: {
+                   hero: {
+                       title: 'Python 数据分析入门',
+                       description: '开启数据探索之旅'
+                   },
+                   intro: {
+                       title: 'Python 数据分析简介',
+                       description: '利用 Python 强大的库进行数据处理和分析。'
+                   },
+                   characters: [
+                       {
+                           name: 'Pandas 库',
+                           image: 'https://picsum.photos/200/204',
+                           description: '用于数据处理和分析的重要库'
+                       },
+                       {
+                           name: 'Matplotlib 库',
+                           image: 'https://picsum.photos/200/205',
+                           description: '用于数据可视化的库'
+                       }
+                   ],
+                   battles: [
+                       {
+                           name: '数据清洗挑战',
+                           image: 'https://picsum.photos/200/206',
+                           description: '处理缺失值和异常值'
+                       }
+                   ]
+               }
+           },
+           {
+               title: "图书标题 4",
+               description: "这是一本关于 Java 面向对象编程的书籍，适合初学者。",
+               bookInfo: {
+                   hero: {
+                       title: 'Java 面向对象编程入门',
+                       description: '掌握 Java 编程的核心概念'
+                   },
+                   intro: {
+                       title: 'Java 面向对象编程简介',
+                       description: '学习类、对象、继承和多态等概念。'
+                   },
+                   characters: [
+                       {
+                           name: '类和对象',
+                           image: 'https://picsum.photos/200/207',
+                           description: 'Java 编程的基本构建块'
+                       },
+                       {
+                           name: '继承和多态',
+                           image: 'https://picsum.photos/200/208',
+                           description: '提高代码复用性和灵活性'
+                       }
+                   ],
+                   battles: [
+                       {
+                           name: '设计模式挑战',
+                           image: 'https://picsum.photos/200/209',
+                           description: '应用设计模式解决实际问题'
+                       }
+                   ]
+               }
+           },
+           {
+               title: "图书标题 5",
+               description: "这是一本关于机器学习基础的书籍，适合初学者。",
+               bookInfo: {
+                   hero: {
+                       title: '机器学习基础入门',
+                       description: '探索机器学习的奥秘'
+                   },
+                   intro: {
+                       title: '机器学习基础简介',
+                       description: '学习监督学习、无监督学习等基本概念。'
+                   },
+                   characters: [
+                       {
+                           name: '线性回归',
+                           image: 'https://picsum.photos/200/210',
+                           description: '用于预测连续值的算法'
+                       },
+                       {
+                           name: 'K 近邻算法',
+                           image: 'https://picsum.photos/200/211',
+                           description: '用于分类和回归的算法'
+                       }
+                   ],
+                   battles: [
+                       {
+                           name: '过拟合和欠拟合挑战',
+                           image: 'https://picsum.photos/200/212',
+                           description: '调整模型复杂度以避免过拟合和欠拟合'
+                       }
+                   ]
+               }
+           },
+           {
+               title: "图书标题 6",
+               description: "这是一本关于数据库设计与管理的书籍，适合开发者。",
+               bookInfo: {
+                   hero: {
+                       title: '数据库设计与管理入门',
+                       description: '掌握数据库的设计和管理技巧'
+                   },
+                   intro: {
+                       title: '数据库设计与管理简介',
+                       description: '学习数据库建模、SQL 查询等知识。'
+                   },
+                   characters: [
+                       {
+                           name: '关系型数据库',
+                           image: 'https://picsum.photos/200/213',
+                           description: '广泛应用的数据库类型'
+                       },
+                       {
+                           name: 'SQL 查询',
+                           image: 'https://picsum.photos/200/214',
+                           description: '用于操作数据库的语言'
+                       }
+                   ],
+                   battles: [
+                       {
+                           name: '数据库性能优化挑战',
+                           image: 'https://picsum.photos/200/215',
+                           description: '提高数据库查询性能'
+                       }
+                   ]
+               }
+           },
+           {
+               title: "图书标题 7",
+               description: "这是一本关于网络编程的书籍，适合开发者。",
+               bookInfo: {
+                   hero: {
+                       title: '网络编程入门',
+                       description: '了解网络通信的原理和实现'
+                   },
+                   intro: {
+                       title: '网络编程简介',
+                       description: '学习 TCP/IP 协议、Socket 编程等知识。'
+                   },
+                   characters: [
+                       {
+                           name: 'TCP 协议',
+                           image: 'https://picsum.photos/200/216',
+                           description: '面向连接的可靠传输协议'
+                       },
+                       {
+                           name: 'Socket 编程',
+                           image: 'https://picsum.photos/200/217',
+                           description: '实现网络通信的编程接口'
+                       }
+                   ],
+                   battles: [
+                       {
+                           name: '网络安全挑战',
+                           image: 'https://picsum.photos/200/218',
+                           description: '防范网络攻击和数据泄露'
+                       }
+                   ]
+               }
+           },
+           {
+               title: "图书标题 8",
+               description: "这是一本关于算法与数据结构的书籍，适合开发者。",
+               bookInfo: {
+                   hero: {
+                       title: '算法与数据结构入门',
+                       description: '提升编程效率的关键'
+                   },
+                   intro: {
+                       title: '算法与数据结构简介',
+                       description: '学习常见的算法和数据结构。'
+                   },
+                   characters: [
+                       {
+                           name: '排序算法',
+                           image: 'https://picsum.photos/200/219',
+                           description: '对数据进行排序的算法'
+                       },
+                       {
+                           name: '栈和队列',
+                           image: 'https://picsum.photos/200/220',
+                           description: '常用的数据结构'
+                       }
+                   ],
+                   battles: [
+                       {
+                           name: '算法复杂度分析挑战',
+                           image: 'https://picsum.photos/200/221',
+                           description: '评估算法的性能'
+                       }
+                   ]
+               }
+           },
+           {
+               title: "图书标题 9",
+               description: "这是一本关于人工智能基础的书籍，适合初学者。",
+               bookInfo: {
+                   hero: {
+                       title: '人工智能基础入门',
+                       description: '开启人工智能之旅'
+                   },
+                   intro: {
+                       title: '人工智能基础简介',
+                       description: '学习人工智能的基本概念和应用。'
+                   },
+                   characters: [
+                       {
+                           name: '深度学习',
+                           image: 'https://picsum.photos/200/222',
+                           description: '人工智能的热门领域'
+                       },
+                       {
+                           name: '自然语言处理',
+                           image: 'https://picsum.photos/200/223',
+                           description: '让计算机理解和处理人类语言'
+                       }
+                   ],
+                   battles: [
+                       {
+                           name: '数据标注挑战',
+                           image: 'https://picsum.photos/200/224',
+                           description: '为模型训练准备高质量的数据'
+                       }
+                   ]
+               }
+           }
+       ];
+       
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const bookList = document.querySelector('.book-list');
+            bookDataList.forEach(bookData => {
+                const bookItem = document.createElement('div');
+                bookItem.classList.add('book-item');
+                bookItem.innerHTML = `
+                    <img src="https://via.placeholder.com/150x200" alt="图书封面">
+                    <h3>${bookData.title}</h3>
+                    <p>${bookData.description}</p>
+                    <a href="#" class="btn">立即阅读</a>
+                `;
+                // 使用 addEventListener 绑定点击事件
+                const readButton = bookItem.querySelector('.btn');
+                readButton.addEventListener('click', function () {
+                    openBook(bookData.bookInfo);
+                });
+                bookList.appendChild(bookItem);
+            });
+        });
+    </script>
 </head>
+
 <body>
 
-<!-- 头部 -->
-<header>
-    <h1>分级阅读平台</h1>
-</header>
+    <!-- 头部 -->
+    <header>
+        <h1>分级阅读平台</h1>
+    </header>
 
-<!-- 导航栏 -->
-<!-- 导航栏容器 -->
-<nav class="navbar">
-    <div class="logo">
-        <img src="logo.png" alt="Logo" style="height: 40px;">
-    </div>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="logo.png" alt="Logo" style="height: 40px;">
+        </div>
     
-    <button class="hamburger">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-    </button>
+        <button class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    
+        <ul class="nav-links">
+            <li><a href="index.html">主产品</a></li>
+            <li><a href="pproduct.html">周边产品</a></li>
+            <li><a href="award.html">获奖公益</a></li>
+            <li><a href="activity.html">有奖活动</a></li>
+            <li><a href="download.html">活动奖状下载</a></li>
+        </ul>
+    </nav>
 
-    <ul class="nav-links">
-        <li><a href="index.html">主产品</a></li>
-        <li><a href="pproduct.html">周边产品</a></li>
-        <li><a href="award.html">获奖公益</a></li>
-        <li><a href="activity.html">有奖活动</a></li>
-        <li><a href="download.html">活动奖状下载</a></li>  
-    </ul>
-</nav>
-
-<!-- 主体内容 -->
-<div class="container">
-    <h2>热门图书推荐</h2>
-    <div class="book-list">
-        <!-- 图书 1 -->
-        <div class="book-item">
-            <img src="https://via.placeholder.com/150x200" alt="图书封面">
-            <h3>图书标题 1</h3>
-            <p>这是一本关于 HTML5 和 CSS 的入门书籍，适合初学者阅读。</p>
-            <a href="#read-book-1">立即阅读</a>
-        </div>
-
-        <!-- 图书 2 -->
-        <div class="book-item">
-            <img src="https://via.placeholder.com/150x200" alt="图书封面">
-            <h3>图书标题 2</h3>
-            <p>这是一本关于 JavaScript 的进阶书籍，适合有一定基础的开发者。</p>
-            <a href="#read-book-2">立即阅读</a>
-        </div>
-
-        <!-- 图书 3 -->
-        <div class="book-item">
-            <img src="https://via.placeholder.com/150x200" alt="图书封面">
-            <h3>图书标题 3</h3>
-            <p>这是一本关于 Python 编程的书籍，适合数据科学爱好者。</p>
-            <a href="#read-book-3">立即阅读</a>
-        </div>
-
-        <!-- 图书 4 -->
-        <div class="book-item">
-            <img src="https://via.placeholder.com/150x200" alt="图书封面">
-            <h3>图书标题 4</h3>
-            <p>这是一本关于 UI/UX 设计的书籍，适合设计师阅读。</p>
-            <a href="#read-book-4">立即阅读</a>
-        </div>
-
-        <!-- 图书 5 -->
-        <div class="book-item">
-            <img src="https://via.placeholder.com/150x200" alt="图书封面">
-            <h3>图书标题 5</h3>
-            <p>这是一本关于人工智能的书籍，适合对 AI 感兴趣的读者。</p>
-            <a href="#read-book-5">立即阅读</a>
-        </div>
-
-        <!-- 图书 6 -->
-        <div class="book-item">
-            <img src="https://via.placeholder.com/150x200" alt="图书封面">
-            <h3>图书标题 6</h3>
-            <p>这是一本关于区块链技术的书籍，适合技术爱好者。</p>
-            <a href="#read-book-6">立即阅读</a>
-        </div>
-
-        <!-- 图书 7 -->
-        <div class="book-item">
-            <img src="https://via.placeholder.com/150x200" alt="图书封面">
-            <h3>图书标题 7</h3>
-            <p>这是一本关于 Web 开发的书籍，适合全栈开发者。</p>
-            <a href="#read-book-7">立即阅读</a>
-        </div>
-
-        <!-- 图书 8 -->
-        <div class="book-item">
-            <img src="https://via.placeholder.com/150x200" alt="图书封面">
-            <h3>图书标题 8</h3>
-            <p>这是一本关于移动应用开发的书籍，适合移动开发者。</p>
-            <a href="#read-book-8">立即阅读</a>
-        </div>
-
-        <!-- 图书 9 -->
-        <div class="book-item">
-            <img src="https://via.placeholder.com/150x200" alt="图书封面">
-            <h3>图书标题 9</h3>
-            <p>这是一本关于云计算的书籍，适合 IT 从业者。</p>
-            <a href="#read-book-9">立即阅读</a>
+    <!-- 主体内容 -->
+    <div class="container">
+        <h2>热门图书推荐</h2>
+        <div class="book-list">
+            <!-- 图书项将通过 JavaScript 动态生成 -->
         </div>
     </div>
-</div>
 
-<!-- 页脚 -->
-<footer>
-    <p>&copy; 2025 cy版权</p>
-</footer>
-<script src="script.js"></script> 
+    <!-- 页脚 -->
+    <footer>
+        <p>&copy; 2025 cy版权</p>
+    </footer>
+    <script src="script.js"></script>
 </body>
+
 </html>
